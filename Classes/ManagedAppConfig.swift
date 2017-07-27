@@ -47,7 +47,7 @@ public class ManagedAppConfig {
     }
     
     // instead of modifying this file's didChange event, allow the registration of closures
-    public func addAppConfigChangedHook(_ : @escaping ([String:Any?]) -> Void) {
+    public func addAppConfigChangedHook(_ appConfigChangedHook: @escaping ([String:Any?]) -> Void) {
         configHooks.append(appConfigChangedHook)
     }
     
@@ -80,7 +80,7 @@ public class ManagedAppConfig {
         return nil
     }
     
-    public func updateValue(_: Any, forKey: String) {
+    public func updateValue(_ value: Any, key forKey: String) {
         if var myAppConfigFeedback = UserDefaults.standard.dictionary(forKey: kFeedbackKey) {
             myAppConfigFeedback[key] = value
             UserDefaults.standard.set(myAppConfigFeedback, forKey: kFeedbackKey)
