@@ -11,6 +11,7 @@
 		AF32134E1F28F02700FE64E3 /* Classes in Resources */ = {isa = PBXBuildFile; fileRef = AF32134B1F28F02700FE64E3 /* Classes */; };
 		AF3213511F28F1E300FE64E3 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = AF3213501F28F1E300FE64E3 /* LICENSE */; };
 		AFAB50DE1F28DFF4000AC50C /* ManagedAppConfigLib.podspec in Resources */ = {isa = PBXBuildFile; fileRef = AFAB50DD1F28DFF4000AC50C /* ManagedAppConfigLib.podspec */; };
+		AFC0A0FE1F2A877E00FD14E1 /* ManagedAppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC0A0FD1F2A877E00FD14E1 /* ManagedAppConfig.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		AF3213501F28F1E300FE64E3 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		AFAB50CE1F27D2A9000AC50C /* ManagedAppConfigLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ManagedAppConfigLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFAB50DD1F28DFF4000AC50C /* ManagedAppConfigLib.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ManagedAppConfigLib.podspec; sourceTree = "<group>"; };
+		AFC0A0FD1F2A877E00FD14E1 /* ManagedAppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ManagedAppConfig.swift; path = Classes/ManagedAppConfig.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +37,7 @@
 		AFAB50C41F27D2A9000AC50C = {
 			isa = PBXGroup;
 			children = (
+				AFC0A0FD1F2A877E00FD14E1 /* ManagedAppConfig.swift */,
 				AF3213501F28F1E300FE64E3 /* LICENSE */,
 				AF32134A1F28F02700FE64E3 /* README.md */,
 				AFAB50DD1F28DFF4000AC50C /* ManagedAppConfigLib.podspec */,
@@ -134,6 +137,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF32134D1F28F02700FE64E3 /* README.md in Sources */,
+				AFC0A0FE1F2A877E00FD14E1 /* ManagedAppConfig.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
