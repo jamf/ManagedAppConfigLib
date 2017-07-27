@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "ManagedAppConfigLib"
-  s.version      = "1.0.2"
+  s.version      = "1.0.0"
   s.summary      = "A facade that simplifies working with Managed App Configuration and Feedback."
 
 
@@ -80,7 +80,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source = { :git => "https://stash.jamf.build/scm/res/managedappconfiglib.git", :tag => "#{s.version}" }
+  s.source = { :git => "https://github.com/jamf/ManagedAppConfigLib.git", :tag => "#{s.version}" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
