@@ -82,7 +82,7 @@ public class ManagedAppConfig {
     
     public func updateValue(_ value: Any, forKey: String) {
         if var myAppConfigFeedback = UserDefaults.standard.dictionary(forKey: kFeedbackKey) {
-            myAppConfigFeedback[value] = value
+            myAppConfigFeedback[forKey] = value
             UserDefaults.standard.set(myAppConfigFeedback, forKey: kFeedbackKey)
         } else {
             // there was no dictionary at all, create one and place the key/value pair in it
