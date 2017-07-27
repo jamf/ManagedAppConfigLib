@@ -66,14 +66,14 @@ public class ManagedAppConfig {
     }
     
     // MARK - Dictionary getters/setters
-    public func getConfigValue(forKey: String) -> Any? {
+    public func getConfigValue(key forKey: String) -> Any? {
         if let myAppConfig = UserDefaults.standard.dictionary(forKey: kConfigurationKey) {
             return myAppConfig[key]
         }
         return nil
     }
     
-    public func getFeedbackValue(forKey: String) -> Any? {
+    public func getFeedbackValue(key forKey: String) -> Any? {
         if var myAppConfigFeedback = UserDefaults.standard.dictionary(forKey: kFeedbackKey) {
             return myAppConfigFeedback[key]
         }
