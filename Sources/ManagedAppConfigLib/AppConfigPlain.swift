@@ -5,8 +5,8 @@
 
 import Foundation
 
-/// A property wrapper type that can be used outside of SwiftUI that reflects a value from Managed App Config (via `UserDefaults`) and
-/// keeps itself up to date with changes in value in that Managed App Config.
+/// A property wrapper type that can be used outside of SwiftUI that reflects a value from Managed App Config
+/// (via `UserDefaults`) and keeps itself up to date with changes in value in that Managed App Config.
 @propertyWrapper public struct AppConfigPlain<Value> {
     // Very simple listener that observes AppConfig changes, and updates it's internal copy of the value as needed.
     private final class Listener<Value> {
@@ -17,7 +17,8 @@ import Foundation
             if subscriber == nil {
                 AppConfigService.shared.use(userDefaults: store)
                 value = AppConfigService.shared.value(for: key, store) ?? defaultValue
-                subscriber = NotificationCenter.default.addObserver(forName: .appConfigMayHaveChanged, object: store, queue: nil) { [weak self] _ in
+                subscriber = NotificationCenter.default.addObserver(forName: .appConfigMayHaveChanged,
+                                                        object: store, queue: nil) { [weak self] _ in
                     guard let self = self else { return }
                     self.value = AppConfigService.shared.value(for: key, store) ?? defaultValue
                 }

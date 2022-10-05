@@ -13,7 +13,8 @@ extension Notification.Name {
     public static let appConfigMayHaveChanged = Self("appConfigMayHaveChanged")
 }
 
-/// An internal service class that keeps track of all used `UserDefaults` objects and listens for changes to managed app config  in them.
+/// An internal service class that keeps track of all used `UserDefaults` objects and listens for changes
+/// to managed app config  in them.
 class AppConfigService {
     static let shared = AppConfigService()
 
@@ -24,11 +25,13 @@ class AppConfigService {
     /// - Parameter userDefaults: The `UserDefaults` object to look for managed app config.
     func use(userDefaults: UserDefaults) {
         if dictionaries[userDefaults] == nil {
-            // We haven't seen this user defaults previously; load it's AppConfig dictionary and listen for changes to it.
+            // We haven't seen this user defaults previously;
+            // load it's AppConfig dictionary and listen for changes to it.
             dictionaries[userDefaults] = userDefaults.dictionary(forKey: ManagedAppConfig.defaultsKey) ?? [:]
-            observers[userDefaults] = NotificationCenter.default.addObserver(forName: UserDefaults.didChangeNotification,
-                                                                             object: userDefaults,
-                                                                             queue: .main) { [weak self] (note: Notification) in
+            let center = NotificationCenter.default
+            observers[userDefaults] = center.addObserver(forName: UserDefaults.didChangeNotification,
+                                                         object: userDefaults,
+                                                         queue: .main) { [weak self] (note: Notification) in
                 guard let self = self else { return }
                 if let defaults = note.object as? UserDefaults {
                     let newValues = defaults.dictionary(forKey: ManagedAppConfig.defaultsKey) ?? [:]

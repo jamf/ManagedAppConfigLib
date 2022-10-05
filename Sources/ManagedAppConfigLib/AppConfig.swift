@@ -23,7 +23,8 @@ import SwiftUI
             if subscriber == nil {
                 AppConfigService.shared.use(userDefaults: store)
                 value = AppConfigService.shared.value(for: key, store) ?? defaultValue
-                subscriber = NotificationCenter.default.addObserver(forName: .appConfigMayHaveChanged, object: store, queue: nil) { [weak self] _ in
+                subscriber = NotificationCenter.default.addObserver(forName: .appConfigMayHaveChanged,
+                                                    object: store, queue: nil) { [weak self] _ in
                     guard let self = self else { return }
                     self.value = AppConfigService.shared.value(for: key, store) ?? defaultValue
                 }
@@ -56,7 +57,7 @@ import SwiftUI
         core.listenTo(store: self.defaults, key: key, defaultValue: defaultValue)
     }
 
-    // MARK:  Initializers
+    // MARK: Initializers
 
     /// Initializer for standard types
     public init(wrappedValue defaultValue: Value, _ key: String, store: UserDefaults = UserDefaults.standard) {

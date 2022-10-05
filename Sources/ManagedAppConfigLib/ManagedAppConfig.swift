@@ -25,17 +25,18 @@ public class ManagedAppConfig {
 
     init() {
         // add observer
-        NotificationCenter.default.addObserver(self, selector: #selector(ManagedAppConfig.didChange), name: UserDefaults.didChangeNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ManagedAppConfig.didChange),
+                                               name: UserDefaults.didChangeNotification, object: nil)
     }
-    
+
     /// Register a closure to be called when AppConfig has values and may have been changed.
-    /// - Parameter appConfigChangedHook: A closure to be called; it will receive the complete AppConfig dictionary.
+    /// - Parameter appConfigChangedHook: A closure to be called; receives the complete AppConfig dictionary.
     public func addAppConfigChangedHook(_ appConfigChangedHook: @escaping HookFunction) {
         configHooks.append(appConfigChangedHook)
     }
 
     /// Register a closure to be called when App Feedback has values and may have been changed.
-    /// - Parameter appFeedbackChangedHook: A closure to be called; it will receive the complete App Feedback dictionary.
+    /// - Parameter appFeedbackChangedHook: A closure to be called; receives the complete App Feedback dictionary.
     public func addAppFeedbackChangedHook(_ appFeedbackChangedHook: @escaping HookFunction) {
         feedbackHooks.append(appFeedbackChangedHook)
     }
@@ -53,7 +54,7 @@ public class ManagedAppConfig {
             }
         }
     }
-    
+
     // MARK: - Dictionary getters/setters
 
     /// Gets the AppConfig value for the given key
@@ -65,7 +66,7 @@ public class ManagedAppConfig {
         }
         return nil
     }
-    
+
     /// Gets the App Feedback value for the given key
     /// - Parameter forKey: The key to look for within App Feedback
     /// - Returns: The value within the App Feedback dictionary
@@ -78,7 +79,7 @@ public class ManagedAppConfig {
 
     /// Update a value within the App Feedback dictionary
     /// - Parameters:
-    ///   - value: The value to set into the App Feedback dictionary; must be one of the simple types supported by `UserDefaults`.
+    ///   - value: Set into the App Feedback dictionary; must be one of the simple types supported by `UserDefaults`.
     ///   - forKey: The key to assign to within App Feedback
     public func updateValue(_ value: Any, forKey: String) {
         if var myAppConfigFeedback = UserDefaults.standard.dictionary(forKey: Self.feedbackKey) {
