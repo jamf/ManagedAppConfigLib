@@ -10,12 +10,10 @@ let package = Package(
         .watchOS(.v2)
     ],
     products: [
-        .library(name: "ManagedAppConfigLib",
-                 targets: ["ManagedAppConfigLib"])
+        .library(name: "ManagedAppConfigLib", targets: ["ManagedAppConfigLib"])
     ],
     targets: [
-        .target(
-            name: "ManagedAppConfigLib"
-        )
+        .target(name: "ManagedAppConfigLib"),
+        .testTarget(name: "ManagedAppConfigLibTests", dependencies: ["ManagedAppConfigLib"])
     ]
 )
