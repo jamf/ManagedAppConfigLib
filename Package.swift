@@ -15,8 +15,7 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "ManagedAppConfigLib",
-            path: "Classes"
+            name: "ManagedAppConfigLib"
         )
     ]
 )
