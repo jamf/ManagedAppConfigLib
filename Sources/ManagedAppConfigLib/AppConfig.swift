@@ -60,6 +60,12 @@ import SwiftUI
     // MARK: Initializers
 
     /// Initializer for standard types
+    ///
+    /// The `store` parameter is useful for unit tests or reading values from other suites.
+    /// - Parameters:
+    ///   - defaultValue: The default value for the property if the AppConfig value is not set
+    ///   - key: A key into the AppConfig dictionary
+    ///   - store: A `UserDefaults` object; defaults to the `.standard` object if not given.
     public init(wrappedValue defaultValue: Value, _ key: String, store: UserDefaults = UserDefaults.standard) {
         self.key = key
         self.defaults = store
@@ -67,6 +73,11 @@ import SwiftUI
     }
 
     /// Initializer for optional types; the default value is always nil
+    ///
+    /// The `store` parameter is useful for unit tests or reading values from other suites.
+    /// - Parameters:
+    ///   - key: A key into the AppConfig dictionary
+    ///   - store: A `UserDefaults` object; defaults to the `.standard` object if not given.
     public init(_ key: String, store: UserDefaults = UserDefaults.standard) where Value: ExpressibleByNilLiteral {
         self.key = key
         self.defaultValue = nil

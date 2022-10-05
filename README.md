@@ -27,7 +27,7 @@ dependencies: [
 
 ## Usage
 You will need to `import ManagedAppConfigLib` in each Swift file you wish to use it.  You can choose
-to use the property wrappers, or make use of the `ManagedAppConfig` class.
+to use the read-only property wrappers, or make use of the `ManagedAppConfig` class for read and write access.
 
 ###  SwiftUI Property Wrapper
 
@@ -51,8 +51,9 @@ Provides a read-only property that keeps itself current with any changes in the 
 This is useful for UIKit or AppKit code or simple Foundation code in models or cli tools.
 
 ```swift
-// If AppConfig "title" doesn't exist or is not a string, will have the value "Default title".
 @AppConfigPlain("title") var title = "Default title"
+@AppConfigPlain("featureEnabled") var isEnabled: Bool = false
+@AppConfigPlain("orgColor") var organizationHexColor: String?
 ```
 
 ###  Simple functional use
