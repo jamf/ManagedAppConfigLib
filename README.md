@@ -4,10 +4,27 @@
 The purpose of ManagedAppConfigLib is to make it that much easier to work with Apple's [Managed App Configuration](https://developer.apple.com/library/content/samplecode/sc2279/Introduction/Intro.html) by providing a few convenience methods.
  
 ## Installation
-ManagedAppConfigLib can be installed via [Cocoapods](https://guides.cocoapods.org/using/getting-started.html) by adding `pod 'ManagedAppConfigLib'` to your Podfile under your desired targets.
+
+### CocoaPods
+
+Install via [Cocoapods](https://guides.cocoapods.org/using/getting-started.html) by adding the following to your Podfile under your desired targets:
+
+```ruby
+pod 'ManagedAppConfigLib'
+```
+
+### Swift Package Manager
+
+Install with [Swift Package Manager](https://github.com/apple/swift-package-manager) by adding the following to your `Package.swift` file:
+
+```swift
+dependencies: [
+    .package(url: "https://github.com/jamf/ManagedAppConfigLib")
+],
+```
 
 ## Usage
-You will need to `import ManagedAppConfigLib` in each file you wish to use it.
+You will need to `import ManagedAppConfigLib` in each Swift file you wish to use it.
 
 * Retrieve a value set by MDM from the Managed App Configuration:
 ```swift

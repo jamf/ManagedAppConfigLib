@@ -1,10 +1,7 @@
-//
-//  ManagedAppConfigLibTests.swift
-//  ManagedAppConfigLibTests
-//
-//  Created by James Felton on 7/20/17.
-//  Copyright © 2017 Jamf. All rights reserved.
-//
+/*
+    SPDX-License-Identifier: MIT
+    Copyright (c) 2017-2022 Jamf Open Source Community
+*/
 
 import XCTest
 @testable import ManagedAppConfigLib
