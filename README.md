@@ -27,7 +27,7 @@ dependencies: [
 
 ## Usage
 You will need to `import ManagedAppConfigLib` in each Swift file you wish to use it.  You can choose
-to use one of the property wrappers, or make use of the `ManagedAppConfig` class.
+to use the property wrappers, or make use of the `ManagedAppConfig` class.
 
 ###  SwiftUI Property Wrapper
 
@@ -36,17 +36,22 @@ property wrapper built in to SwiftUI.  Provides a type-safe read-only property t
 current with any changes in the AppConfig value, and causes a SwiftUI redraw when it's value changes.
 
 ```swift
-// If AppConfig doesn't exist or is not a string, will have the value "Default title".
+// If AppConfig "title" doesn't exist or is not a string, will have the value "Default title".
 @AppConfig("title") var title = "Default title"
+// If AppConfig "featureEnabled" doesn't exist or is not a boolean, will have the value `false`.
+@AppConfig("featureEnabled") var isEnabled: Bool = false
+// If AppConfig "orgColor" doesn't exist or is not a string, this will be nil.
+@AppConfig("orgColor") var organizationHexColor: String?
 ```
 
 ###  Non-SwiftUI Property Wrapper
 
 Functions much like the `@AppConfig` property wrapper except that it does not require SwiftUI.
 Provides a read-only property that keeps itself current with any changes in the AppConfig value.
+This is useful for UIKit or AppKit code or simple Foundation code in models or cli tools.
 
 ```swift
-// If AppConfig doesn't exist or is not a string, will have the value "Default title".
+// If AppConfig "title" doesn't exist or is not a string, will have the value "Default title".
 @AppConfigPlain("title") var title = "Default title"
 ```
 
