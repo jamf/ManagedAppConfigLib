@@ -4,10 +4,9 @@ import PackageDescription
 let package = Package(
     name: "ManagedAppConfigLib",
     platforms: [
-        .macOS(.v10_10),
-        .iOS(.v11),
-        .tvOS(.v9),
-        .watchOS(.v2)
+        .macOS(.v10_15),
+        .iOS(.v8),
+        .tvOS(.v10)
     ],
     products: [
         .library(name: "ManagedAppConfigLib", targets: ["ManagedAppConfigLib"])

@@ -7,6 +7,7 @@ import Foundation
 
 /// A property wrapper type that can be used outside of SwiftUI that reflects a value from Managed App Config
 /// (via `UserDefaults`) and keeps itself up to date with changes in value in that Managed App Config.
+@available(macOS 11, iOS 7.0, tvOS 10.2, *)
 @propertyWrapper public struct AppConfigPlain<Value> {
     // Very simple listener that observes AppConfig changes, and updates it's internal copy of the value as needed.
     private final class Listener<Value> {

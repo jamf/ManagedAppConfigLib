@@ -15,6 +15,7 @@ extension Notification.Name {
 
 /// An internal service class that keeps track of all used `UserDefaults` objects and listens for changes
 /// to managed app config  in them.
+@available(macOS 11, iOS 7.0, tvOS 10.2, *)
 class AppConfigService {
     static let shared = AppConfigService()
 

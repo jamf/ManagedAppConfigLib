@@ -6,6 +6,7 @@
 import Foundation
 
 /// Simple class for working with AppConfig values and feedback.
+@available(macOS 11.0, iOS 7.0, tvOS 10.2, *)
 public class ManagedAppConfig {
     /// The `UserDefaults` key for Managed AppConfig
     public static let defaultsKey = "com.apple.configuration.managed"

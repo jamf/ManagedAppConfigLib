@@ -11,8 +11,10 @@ Pod::Spec.new do |s|
   s.license      = { :type => "MIT", :file => "LICENSE" }
   s.author       = { "James Felton" => "james.felton@jamf.com" }
 
-  s.platform     = :ios, "9.0"
+  s.swift_versions = "5.1"
+  s.platform     = :ios, "8.0"
   s.tvos.deployment_target = "10.2"
+  s.macos.deployment_target = "11"
 
   s.source = { :git => "https://github.com/jamf/ManagedAppConfigLib.git", :tag => "#{s.version}" }
 

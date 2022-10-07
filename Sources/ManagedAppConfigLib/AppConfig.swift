@@ -8,7 +8,7 @@ import SwiftUI
 
 /// A property wrapper type that reflects a value from Managed App Config (via `UserDefaults`) and
 /// invalidates a SwiftUI view on a change in value in that Managed App Config.
-@available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+@available(macOS 11, iOS 13.0, tvOS 13.0, *)
 @propertyWrapper public struct AppConfig<Value>: DynamicProperty {
     // Very simple listener that observes AppConfig changes, and has a local copy of the AppConfig's value.
     private final class Listener<Value>: ObservableObject {
