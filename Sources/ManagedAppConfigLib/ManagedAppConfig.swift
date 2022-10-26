@@ -11,9 +11,9 @@ import Foundation
 /// Configuration and Managed App Feedback values.
 @available(macOS 11.0, iOS 7.0, tvOS 10.2, *)
 public class ManagedAppConfig {
-    /// The `UserDefaults` key for Managed AppConfig
-    public static let defaultsKey = "com.apple.configuration.managed"
-    /// The `UserDefaults` key for Managed App Feedback
+    /// The `UserDefaults` key for Managed App Configuration.
+    public static let configurationKey = "com.apple.configuration.managed"
+    /// The `UserDefaults` key for Managed App Feedback.
     public static let feedbackKey = "com.apple.feedback.managed"
 
    	/// Returns the shared Managed App Configuration object.
@@ -51,7 +51,7 @@ public class ManagedAppConfig {
 
     // called when the userdefaults did change notification fires
     @objc func didChange() {
-        if let configDict = UserDefaults.standard.dictionary(forKey: Self.defaultsKey) {
+        if let configDict = UserDefaults.standard.dictionary(forKey: Self.configurationKey) {
             for hook in configHooks {
                 hook(configDict)
             }
@@ -69,7 +69,7 @@ public class ManagedAppConfig {
     /// - Parameter forKey: The key to look for within Managed App Configuration.
     /// - Returns: The value within the Managed App Configuration dictionary, if any.
     public func getConfigValue(forKey: String) -> Any? {
-        if let myAppConfig = UserDefaults.standard.dictionary(forKey: Self.defaultsKey) {
+        if let myAppConfig = UserDefaults.standard.dictionary(forKey: Self.configurationKey) {
             return myAppConfig[forKey]
         }
         return nil
