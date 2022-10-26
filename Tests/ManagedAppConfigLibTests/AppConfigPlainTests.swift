@@ -86,7 +86,7 @@ final class AppConfigPlainTests: XCTestCase {
     func testStringConfigValue() throws {
         // given
         let defaults = UserDefaults()
-        defaults.register(defaults: [ManagedAppConfig.defaultsKey: ["theKey": "some"]])
+        defaults.register(defaults: [ManagedAppConfig.configurationKey: ["theKey": "some"]])
 
         // when
         @AppConfigPlain("theKey", store: defaults) var actualOptional: String?
@@ -104,12 +104,12 @@ final class AppConfigPlainTests: XCTestCase {
     func testUpdatingConfigValues() throws {
         // given
         let defaults = UserDefaults()
-        defaults.register(defaults: [ManagedAppConfig.defaultsKey: ["theKey": "first"]])
+        defaults.register(defaults: [ManagedAppConfig.configurationKey: ["theKey": "first"]])
         @AppConfigPlain("theKey", store: defaults) var actualWithDefault = "what"
         XCTAssertEqual(actualWithDefault, "first")
 
         // when
-        defaults.register(defaults: [ManagedAppConfig.defaultsKey: ["theKey": "second"]])
+        defaults.register(defaults: [ManagedAppConfig.configurationKey: ["theKey": "second"]])
 
         // then
         XCTAssertEqual(actualWithDefault, "second")

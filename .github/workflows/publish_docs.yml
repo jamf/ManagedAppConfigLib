@@ -1,0 +1,54 @@
+name: Build and Publish Docs
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - 'main'
+
+# Kill any previous run still executing
+concurrency:
+  group: '${{ github.workflow }} @ ${{ github.event.pull_request.head.label || github.head_ref || github.ref }}'
+  cancel-in-progress: true
+
+jobs:
+  build_docs:
+    name: Build and Archive Docs
+    runs-on: macos-12
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Generate docs
+      run: |
+        swift package \
+          --allow-writing-to-directory github-pages \
+          generate-documentation \
+          --target ManagedAppConfigLib \
+          --disable-indexing \
+          --transform-for-static-hosting \
+          --hosting-base-path ManagedAppConfigLib/ \
+          --output-path github-pages
+
+    - name: Upload docs archive
+      uses: actions/upload-pages-artifact@main
+      with:
+        path: github-pages
+
+  deploy:
+    name: Deploy Docs
+    needs: build_docs
+    
+    permissions:
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}  
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v1

@@ -14,7 +14,7 @@ extension Notification.Name {
 }
 
 /// An internal service class that keeps track of all used `UserDefaults` objects and listens for changes
-/// to managed app config  in them.
+/// to Managed App Configuration in them.
 @available(macOS 11, iOS 7.0, tvOS 10.2, *)
 class AppConfigService {
     static let shared = AppConfigService()
@@ -28,14 +28,14 @@ class AppConfigService {
         if dictionaries[userDefaults] == nil {
             // We haven't seen this user defaults previously;
             // load it's AppConfig dictionary and listen for changes to it.
-            dictionaries[userDefaults] = userDefaults.dictionary(forKey: ManagedAppConfig.defaultsKey) ?? [:]
+            dictionaries[userDefaults] = userDefaults.dictionary(forKey: ManagedAppConfig.configurationKey) ?? [:]
             let center = NotificationCenter.default
             observers[userDefaults] = center.addObserver(forName: UserDefaults.didChangeNotification,
                                                          object: userDefaults,
                                                          queue: .main) { [weak self] (note: Notification) in
                 guard let self = self else { return }
                 if let defaults = note.object as? UserDefaults {
-                    let newValues = defaults.dictionary(forKey: ManagedAppConfig.defaultsKey) ?? [:]
+                    let newValues = defaults.dictionary(forKey: ManagedAppConfig.configurationKey) ?? [:]
                     // Because we can't easily check if specific values in the app config have changed,
                     // we send notifications when either
                     // 1) appConfig has been set with some values (maybe new, maybe something changed),
