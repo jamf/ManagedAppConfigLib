@@ -5,7 +5,10 @@
 
 import Foundation
 
-/// Simple class for working with AppConfig values and feedback.
+/// A class for working with Managed App Configuration values and Managed App Feedback.
+///
+/// The `ManagedAppConfig` class provides a programmatic interface for interacting with Managed App
+/// Configuration and Managed App Feedback values.
 @available(macOS 11.0, iOS 7.0, tvOS 10.2, *)
 public class ManagedAppConfig {
     /// The `UserDefaults` key for Managed AppConfig
@@ -13,12 +16,16 @@ public class ManagedAppConfig {
     /// The `UserDefaults` key for Managed App Feedback
     public static let feedbackKey = "com.apple.feedback.managed"
 
-   	/// Shared singleton object
+   	/// Returns the shared Managed App Configuration object.
+    /// - Returns: The shared Managed App Configuration object.
+    ///
+    /// If the shared Managed App Configuration object does not exist yet, it is created and listens for changes
+    /// in the standard `UserDefaults`.
     public static let shared = ManagedAppConfig()
 
-    /// A type representing a function to be called when AppConfig changes.
+    /// A type representing a function to be called when Managed App Configuration or Feedback changes.
     ///
-    /// It will receive the complete AppConfig or App Feedback dictionary.
+    /// It will receive the complete Managed App Configuration or Managed App Feedback dictionary.
     public typealias HookFunction = ([String: Any?]) -> Void
 
     private var configHooks = [HookFunction]()
@@ -30,14 +37,14 @@ public class ManagedAppConfig {
                                                name: UserDefaults.didChangeNotification, object: nil)
     }
 
-    /// Register a closure to be called when AppConfig has values and may have been changed.
-    /// - Parameter appConfigChangedHook: A closure to be called; receives the complete AppConfig dictionary.
+    /// Register a closure to be called when Managed App Configuration has values and may have been changed.
+    /// - Parameter appConfigChangedHook: A closure to be called; receives the complete Managed App Configuration dictionary.
     public func addAppConfigChangedHook(_ appConfigChangedHook: @escaping HookFunction) {
         configHooks.append(appConfigChangedHook)
     }
 
-    /// Register a closure to be called when App Feedback has values and may have been changed.
-    /// - Parameter appFeedbackChangedHook: A closure to be called; receives the complete App Feedback dictionary.
+    /// Register a closure to be called when Managed App Feedback has values and may have been changed.
+    /// - Parameter appFeedbackChangedHook: A closure to be called; receives the complete Managed App Feedback dictionary.
     public func addAppFeedbackChangedHook(_ appFeedbackChangedHook: @escaping HookFunction) {
         feedbackHooks.append(appFeedbackChangedHook)
     }
@@ -58,9 +65,9 @@ public class ManagedAppConfig {
 
     // MARK: - Dictionary getters/setters
 
-    /// Gets the AppConfig value for the given key
-    /// - Parameter forKey: The key to look for within AppConfig
-    /// - Returns: The value within the AppConfig dictionary
+    /// Gets the Managed App Configuration value for the given key.
+    /// - Parameter forKey: The key to look for within Managed App Configuration.
+    /// - Returns: The value within the Managed App Configuration dictionary, if any.
     public func getConfigValue(forKey: String) -> Any? {
         if let myAppConfig = UserDefaults.standard.dictionary(forKey: Self.defaultsKey) {
             return myAppConfig[forKey]
@@ -68,9 +75,9 @@ public class ManagedAppConfig {
         return nil
     }
 
-    /// Gets the App Feedback value for the given key
-    /// - Parameter forKey: The key to look for within App Feedback
-    /// - Returns: The value within the App Feedback dictionary
+    /// Gets the Managed App Feedback value for the given key.
+    /// - Parameter forKey: The key to look for within Managed App Feedback.
+    /// - Returns: The value within the Managed App Feedback dictionary.
     public func getFeedbackValue(forKey: String) -> Any? {
         if let myAppConfigFeedback = UserDefaults.standard.dictionary(forKey: Self.feedbackKey) {
             return myAppConfigFeedback[forKey]
@@ -78,10 +85,10 @@ public class ManagedAppConfig {
         return nil
     }
 
-    /// Update a value within the App Feedback dictionary
+    /// Set or update a value within the Managed App Feedback dictionary.
     /// - Parameters:
-    ///   - value: Set into the App Feedback dictionary; must be one of the simple types supported by `UserDefaults`.
-    ///   - forKey: The key to assign to within App Feedback
+    ///   - value: Set into the Managed App Feedback dictionary; must be one of the types supported by `UserDefaults`.
+    ///   - forKey: The key to assign to within Managed App Feedback.
     public func updateValue(_ value: Any, forKey: String) {
         if var myAppConfigFeedback = UserDefaults.standard.dictionary(forKey: Self.feedbackKey) {
             myAppConfigFeedback[forKey] = value

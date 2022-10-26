@@ -6,8 +6,13 @@
 import Foundation
 import SwiftUI
 
-/// A property wrapper type that reflects a value from Managed App Config (via `UserDefaults`) and
-/// invalidates a SwiftUI view on a change in value in that Managed App Config.
+/// A read-only property wrapper type that reflects a value from Managed App Configuration (via `UserDefaults`) and
+/// invalidates a SwiftUI view on a change in value in that Managed App Configuration.
+///
+/// Create an app config value in a SwiftUI `View`, `App`, or `Scene` by applying the `@AppConfig` attribute to a property
+/// declaration.
+///
+/// When the Managed App Config value changes, SwiftUI updates the parts of any view that depend on those properties.
 @available(macOS 11, iOS 13.0, tvOS 13.0, *)
 @propertyWrapper public struct AppConfig<Value>: DynamicProperty {
     // Very simple listener that observes AppConfig changes, and has a local copy of the AppConfig's value.
@@ -45,7 +50,7 @@ import SwiftUI
     private let defaults: UserDefaults
     private let defaultValue: Value
 
-    /// The value from AppConfig or the defaultValue provided to the initializer.
+    /// The value from Managed App Configuration or the `defaultValue` provided to the initializer.
     public var wrappedValue: Value {
         core.value ?? defaultValue
     }
@@ -59,12 +64,12 @@ import SwiftUI
 
     // MARK: Initializers
 
-    /// Initializer for standard types
+    /// Initializer for standard types.
     ///
     /// The `store` parameter is useful for unit tests or reading values from other suites.
     /// - Parameters:
-    ///   - defaultValue: The default value for the property if the AppConfig value is not set
-    ///   - key: A key into the AppConfig dictionary
+    ///   - defaultValue: The default value for the property if the Managed App Configuration value is not set.
+    ///   - key: A key into the Managed App Configuration dictionary.
     ///   - store: A `UserDefaults` object; defaults to the `.standard` object if not given.
     public init(wrappedValue defaultValue: Value, _ key: String, store: UserDefaults = UserDefaults.standard) {
         self.key = key
@@ -76,7 +81,7 @@ import SwiftUI
     ///
     /// The `store` parameter is useful for unit tests or reading values from other suites.
     /// - Parameters:
-    ///   - key: A key into the AppConfig dictionary
+    ///   - key: A key into the Managed App Configuration dictionary.
     ///   - store: A `UserDefaults` object; defaults to the `.standard` object if not given.
     public init(_ key: String, store: UserDefaults = UserDefaults.standard) where Value: ExpressibleByNilLiteral {
         self.key = key
