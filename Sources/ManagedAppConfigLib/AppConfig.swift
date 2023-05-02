@@ -13,7 +13,7 @@ import SwiftUI
 /// declaration.
 ///
 /// When the Managed App Config value changes, SwiftUI updates the parts of any view that depend on those properties.
-@available(macOS 11, iOS 13.0, tvOS 13.0, *)
+@available(macOS 11, iOS 14.0, tvOS 14.0, *)
 @propertyWrapper public struct AppConfig<Value>: DynamicProperty {
     // Very simple listener that observes AppConfig changes, and has a local copy of the AppConfig's value.
     private final class Listener<Value>: ObservableObject {
