@@ -1,7 +1,7 @@
 /*
-    SPDX-License-Identifier: MIT
-    Copyright (c) 2022 Jamf Open Source Community
-*/
+ SPDX-License-Identifier: MIT
+ Copyright (c) 2022-2023 Jamf
+ */
 
 import Foundation
 
@@ -25,7 +25,7 @@ import Foundation
                 AppConfigService.shared.use(userDefaults: store)
                 value = AppConfigService.shared.value(for: key, store) ?? defaultValue
                 subscriber = NotificationCenter.default.addObserver(forName: .appConfigMayHaveChanged,
-                                                        object: store, queue: nil) { [weak self] _ in
+                                                                    object: store, queue: nil) { [weak self] _ in
                     guard let self = self else { return }
                     self.value = AppConfigService.shared.value(for: key, store) ?? defaultValue
                 }

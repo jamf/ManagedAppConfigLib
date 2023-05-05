@@ -1,6 +1,6 @@
 /*
     SPDX-License-Identifier: MIT
-    Copyright (c) 2017-2022 Jamf Open Source Community
+    Copyright (c) 2017-2023 Jamf
 */
 
 import Foundation
