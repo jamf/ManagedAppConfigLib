@@ -17,7 +17,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  Unit Tests:
+  UnitTests:
     runs-on: macos-latest
     name: Run unit tests
 
