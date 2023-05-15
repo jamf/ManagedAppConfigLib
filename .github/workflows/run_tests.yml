@@ -1,3 +1,6 @@
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2022-2023 Jamf
+
 name: Run unit tests
 
 on:
@@ -14,12 +17,17 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  spm_tests:
-    name: Run package tests
-    runs-on: macos-12
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v3
+  UnitTests:
+    runs-on: macos-latest
+    name: Run unit tests
 
-    - name: Unit Test
+    steps:
+    - uses: actions/checkout@v3
+    - name: Unit Test (macOS)
       run: swift test -v
+
+    - name: Unit Test (iOS)
+      run: xcodebuild test -scheme ManagedAppConfigLib -sdk iphonesimulator16.2 -destination "OS=16.2,name=iPhone 13"
+
+    - name: Unit Test (tvOS)
+      run: xcodebuild test -scheme ManagedAppConfigLib -sdk appletvsimulator16.1 -destination "OS=16.1,name=Apple TV"
