@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
   s.author       = "Kyle Hammond", "James Felton"
 
   s.swift_versions = "5.1"
-  s.platform     = :ios, "8.0"
+  s.platform     = :ios, "9.0" # Actually supports iOS 8, but CocoaPods issue #11839
   s.tvos.deployment_target = "10.2"
   s.macos.deployment_target = "11"
 
