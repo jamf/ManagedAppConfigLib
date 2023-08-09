@@ -16,7 +16,7 @@ import SwiftUI
 @available(macOS 11, iOS 14.0, tvOS 14.0, *)
 @propertyWrapper public struct AppConfig<Value>: DynamicProperty {
     // Very simple listener that observes AppConfig changes, and has a local copy of the AppConfig's value.
-    private final class Listener<Value>: ObservableObject {
+    private final class Listener: ObservableObject {
         var subscriber: NSObjectProtocol?
         var value: Value? {
             willSet {
@@ -45,7 +45,7 @@ import SwiftUI
     ///
     /// Thanks to `DynamicProperty` conformance, when this object sends it's `objectWillChange` message
     /// SwiftUI will redraw any views depending on this property wrapper.
-    @StateObject private var core = Listener<Value>()
+    @StateObject private var core = Listener()
     private let key: String
     private let defaults: UserDefaults
     private let defaultValue: Value
