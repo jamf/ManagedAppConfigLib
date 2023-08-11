@@ -16,7 +16,7 @@ import Foundation
 @available(macOS 11, iOS 7.0, tvOS 10.2, *)
 @propertyWrapper public struct AppConfigPlain<Value> {
     // Very simple listener that observes AppConfig changes, and updates it's internal copy of the value as needed.
-    private final class Listener<Value> {
+    private final class Listener {
         var subscriber: NSObjectProtocol?
         var value: Value?
 
@@ -38,7 +38,7 @@ import Foundation
     }
 
     /// This object is the dynamic listener for changes to the app config and storage for the value.
-    private var listener = Listener<Value>()
+    private var listener = Listener()
     private let defaultValue: Value
 
     /// The value from Managed App Configuration or the defaultValue provided to the initializer.

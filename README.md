@@ -86,3 +86,8 @@ ManagedAppConfig.shared.addAppConfigChangedHook(myClosure)
 let numberOfErrors = 0
 ManagedAppConfig.shared.updateValue(numberOfErrors, forKey: "errorCount")
 ```
+
+## Contributing
+
+This repository now requires verified signed commits.  You can find out more about
+[signing commits on GitHub Docs](https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits).
