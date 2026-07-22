@@ -22,7 +22,7 @@ jobs:
     name: Run unit tests
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v7
     - name: Unit Test (macOS)
       run: swift test -v
 
