@@ -13,7 +13,7 @@ import Foundation
 /// If used in a SwiftUI view, does **not** trigger a SwiftUI view redraw when the
 /// Managed App Configuration value changes.  See ``AppConfig`` if you want a SwiftUI view to redraw on update
 /// of a Managed App Configuration value.
-@available(macOS 11, iOS 7.0, tvOS 10.2, *)
+@available(macOS 13, iOS 17.0, tvOS 17.0, *)
 @propertyWrapper public struct AppConfigPlain<Value> {
     // Very simple listener that observes AppConfig changes, and updates it's internal copy of the value as needed.
     private final class Listener {

@@ -9,7 +9,7 @@ import Foundation
 ///
 /// The `ManagedAppConfig` class provides a programmatic interface for interacting with Managed App
 /// Configuration and Managed App Feedback values.
-@available(macOS 11.0, iOS 7.0, tvOS 10.2, *)
+@available(macOS 13.0, iOS 17.0, tvOS 17.0, *)
 public class ManagedAppConfig {
     /// The `UserDefaults` key for Managed App Configuration.
     public static let configurationKey = "com.apple.configuration.managed"

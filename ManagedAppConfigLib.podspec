@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "ManagedAppConfigLib"
-  s.version      = "1.1.2"
+  s.version      = "2.0.0"
   s.summary      = "Simplify working with Managed App Configuration and Feedback."
 
   s.description  = <<-DESC
@@ -11,10 +11,10 @@ Pod::Spec.new do |s|
   s.license      = { :type => "MIT", :file => "LICENSE" }
   s.author       = "Kyle Hammond", "James Felton"
 
-  s.swift_versions = "5.1"
-  s.platform     = :ios, "9.0" # Actually supports iOS 8, but CocoaPods issue #11839
-  s.tvos.deployment_target = "10.2"
-  s.macos.deployment_target = "11"
+  s.swift_versions = "5.9"
+  s.platform     = :ios, "17.0"
+  s.tvos.deployment_target = "17.0"
+  s.macos.deployment_target = "13.0"
 
   s.source = { :git => "https://github.com/jamf/ManagedAppConfigLib.git", :tag => "#{s.version}" }
 

@@ -5,7 +5,7 @@ The purpose of ManagedAppConfigLib is to make it much easier to work with Apple'
 [Managed App Configuration](https://developer.apple.com/library/content/samplecode/sc2279/Introduction/Intro.html)
 by providing a class that manages access to it, as well as some property wrappers for modern Swift usage.
 
-Managed App Configuration is supported by Apple on iOS 7+, macOS 11+, and tvOS 10.2+.
+ManagedAppConfigLib requires iOS 17+, macOS 13+, and tvOS 17+.
 
 ## Installation
 

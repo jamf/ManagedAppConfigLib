@@ -1,12 +1,12 @@
-// swift-tools-version:5.6
+// swift-tools-version:5.9
 import PackageDescription
 
 let package = Package(
     name: "ManagedAppConfigLib",
     platforms: [
-        .macOS(.v11),
-        .iOS(.v8),
-        .tvOS(.v10)
+        .macOS(.v13),
+        .iOS(.v17),
+        .tvOS(.v17)
     ],
     products: [
         .library(name: "ManagedAppConfigLib", targets: ["ManagedAppConfigLib"])
