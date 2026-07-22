@@ -27,7 +27,11 @@ jobs:
       run: swift test -v
 
     - name: Unit Test (iOS)
-      run: xcodebuild test -scheme ManagedAppConfigLib -destination "platform=iOS Simulator,name=iPhone 15,OS=latest"
+      run: |
+        UDID=$(xcrun simctl list devices available | grep 'iPhone' | head -1 | grep -Eo '[0-9A-Fa-f]{8}-([0-9A-Fa-f]{4}-){3}[0-9A-Fa-f]{12}')
+        xcodebuild test -scheme ManagedAppConfigLib -destination "id=$UDID"
 
     - name: Unit Test (tvOS)
-      run: xcodebuild test -scheme ManagedAppConfigLib -destination "platform=tvOS Simulator,name=Apple TV,OS=latest"
+      run: |
+        UDID=$(xcrun simctl list devices available | grep 'Apple TV' | head -1 | grep -Eo '[0-9A-Fa-f]{8}-([0-9A-Fa-f]{4}-){3}[0-9A-Fa-f]{12}')
+        xcodebuild test -scheme ManagedAppConfigLib -destination "id=$UDID"
