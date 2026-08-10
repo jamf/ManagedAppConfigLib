@@ -22,12 +22,16 @@ jobs:
     name: Run unit tests
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v7
     - name: Unit Test (macOS)
       run: swift test -v
 
     - name: Unit Test (iOS)
-      run: xcodebuild test -scheme ManagedAppConfigLib -sdk iphonesimulator16.2 -destination "OS=16.2,name=iPhone 13"
+      run: |
+        UDID=$(xcrun simctl list devices available | grep 'iPhone' | head -1 | grep -Eo '[0-9A-Fa-f]{8}-([0-9A-Fa-f]{4}-){3}[0-9A-Fa-f]{12}')
+        xcodebuild test -scheme ManagedAppConfigLib -destination "id=$UDID"
 
     - name: Unit Test (tvOS)
-      run: xcodebuild test -scheme ManagedAppConfigLib -sdk appletvsimulator16.1 -destination "OS=16.1,name=Apple TV"
+      run: |
+        UDID=$(xcrun simctl list devices available | grep 'Apple TV' | head -1 | grep -Eo '[0-9A-Fa-f]{8}-([0-9A-Fa-f]{4}-){3}[0-9A-Fa-f]{12}')
+        xcodebuild test -scheme ManagedAppConfigLib -destination "id=$UDID"

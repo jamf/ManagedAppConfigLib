@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.0] - 2026-07-22
+### Changed
+- Raised the Swift Package Manager tools version to 5.9 and set the CocoaPods `swift_versions` to 5.9.
+- Raised the minimum deployment targets to macOS 13, iOS 17, and tvOS 17 across `Package.swift`, the podspec, the `@available` annotations, and the README. **This is a breaking change for consumers on older OS versions.**
+- Refreshed GitHub Actions workflows to run on current macOS runners and simulators, and bumped the docs-publishing action versions.
+
+### Added
+- Added unit tests covering the `ManagedAppConfig` class (config/feedback getters, `updateValue`, change hooks, and the public key constants).
+
 ## [1.1.2] - 2023-08-11
 ### Fixed
 - Updated podspec file to target iOS 9 and higher to work around a problem with CocoaPods and Xcode 14.3+ ([Issue #8](https://github.com/jamf/ManagedAppConfigLib/issues/8)) [@macblazer](https://github.com/macblazer).
